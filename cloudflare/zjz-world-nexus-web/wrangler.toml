@@ -1,0 +1,24 @@
+name = "zjz-world-nexus-web"
+main = "./worker.js"
+compatibility_date = "2026-04-15"
+workers_dev = false
+preview_urls = false
+routes = [
+  "zjz.world/nexus",
+  "zjz.world/nexus/*",
+  "zjz.world/.well-known/apple-app-site-association",
+  "zjz.world/apple-app-site-association",
+]
+
+[vars]
+NEXUS_APPLE_BUNDLE_IDS = "one.zjz.nexus.ios,one.zjz.nexus.macos"
+
+[[services]]
+binding = "NEXUS_DATA"
+service = "zjz-world-nexus-data"
+environment = "production"
+
+[[services]]
+binding = "UNIVERSAL_AUTH"
+service = "zjz-world-universal-auth"
+environment = "production"

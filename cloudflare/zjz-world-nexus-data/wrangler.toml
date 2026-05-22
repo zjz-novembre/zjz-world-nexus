@@ -1,0 +1,17 @@
+name = "zjz-world-nexus-data"
+main = "./worker.js"
+compatibility_date = "2026-04-15"
+workers_dev = false
+preview_urls = false
+
+[vars]
+NEXUS_SHARED_ICON_OWNER_EMAIL = "zjz.one@outlook.com"
+
+[[r2_buckets]]
+binding = "NEXUS_ICONS"
+bucket_name = "zjz-worker-nexus-icons"
+
+[[services]]
+binding = "UNIVERSAL_AUTH"
+service = "zjz-world-universal-auth"
+environment = "production"

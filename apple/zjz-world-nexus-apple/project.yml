@@ -1,0 +1,99 @@
+name: NexusApple
+options:
+  bundleIdPrefix: one.zjz.nexus
+  deploymentTarget:
+    iOS: "17.0"
+    macOS: "14.0"
+settings:
+  base:
+    CURRENT_PROJECT_VERSION: 1
+    MARKETING_VERSION: 1.0.0
+    SWIFT_VERSION: 6.0
+    ENABLE_USER_SCRIPT_SANDBOXING: NO
+targets:
+  NexusIOS:
+    type: application
+    platform: iOS
+    sources:
+      - path: shared
+      - path: intents
+      - path: ios
+    dependencies:
+      - target: NexusIOSAutoFill
+        embed: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: one.zjz.nexus.ios
+        PRODUCT_NAME: Nexus
+        CODE_SIGN_ENTITLEMENTS: config/ios-entitlements.plist
+        DEVELOPMENT_TEAM: ""
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Nexus
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.productivity
+        INFOPLIST_KEY_NexusKeychainAccessGroup: "$(AppIdentifierPrefix)one.zjz.nexus.shared"
+        INFOPLIST_KEY_NexusAppGroup: group.one.zjz.nexus
+        INFOPLIST_KEY_NexusBaseURL: https://zjz.world/nexus
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        TARGETED_DEVICE_FAMILY: "1,2"
+  NexusMacOS:
+    type: application
+    platform: macOS
+    sources:
+      - path: shared
+      - path: intents
+      - path: macos
+    dependencies:
+      - target: NexusMacOSAutoFill
+        embed: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: one.zjz.nexus.macos
+        PRODUCT_NAME: Nexus
+        CODE_SIGN_ENTITLEMENTS: config/macos-entitlements.plist
+        CODE_SIGN_IDENTITY: "-"
+        COMBINE_HIDPI_IMAGES: YES
+        DEVELOPMENT_TEAM: ""
+        ENABLE_HARDENED_RUNTIME: YES
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Nexus
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.productivity
+        INFOPLIST_KEY_NexusKeychainAccessGroup: "$(AppIdentifierPrefix)one.zjz.nexus.shared"
+        INFOPLIST_KEY_NexusAppGroup: group.one.zjz.nexus
+        INFOPLIST_KEY_NexusBaseURL: https://zjz.world/nexus
+  NexusIOSAutoFill:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: shared
+      - path: ios-autofill
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: one.zjz.nexus.ios.autofill
+        PRODUCT_NAME: Nexus AutoFill
+        CODE_SIGN_ENTITLEMENTS: config/ios-autofill-entitlements.plist
+        DEVELOPMENT_TEAM: ""
+        INFOPLIST_FILE: config/ios-autofill-info.plist
+        INFOPLIST_KEY_NexusKeychainAccessGroup: "$(AppIdentifierPrefix)one.zjz.nexus.shared"
+        INFOPLIST_KEY_NexusAppGroup: group.one.zjz.nexus
+        INFOPLIST_KEY_NexusBaseURL: https://zjz.world/nexus
+        APPLICATION_EXTENSION_API_ONLY: YES
+  NexusMacOSAutoFill:
+    type: app-extension
+    platform: macOS
+    sources:
+      - path: shared
+      - path: macos-autofill
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: one.zjz.nexus.macos.autofill
+        PRODUCT_NAME: Nexus AutoFill
+        CODE_SIGN_ENTITLEMENTS: config/macos-autofill-entitlements.plist
+        CODE_SIGN_IDENTITY: "-"
+        DEVELOPMENT_TEAM: ""
+        INFOPLIST_FILE: config/macos-autofill-info.plist
+        INFOPLIST_KEY_NexusKeychainAccessGroup: "$(AppIdentifierPrefix)one.zjz.nexus.shared"
+        INFOPLIST_KEY_NexusAppGroup: group.one.zjz.nexus
+        INFOPLIST_KEY_NexusBaseURL: https://zjz.world/nexus
+        APPLICATION_EXTENSION_API_ONLY: YES
