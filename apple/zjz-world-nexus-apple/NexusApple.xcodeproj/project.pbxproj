@@ -7,16 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13AE14750CAC41326FC7AF76 /* toolbar-add.png in Resources */ = {isa = PBXBuildFile; fileRef = B2BFA47B33607654B58D3B47 /* toolbar-add.png */; };
+		1AB837FFBE34448BFDC0011F /* toolbar-user.png in Resources */ = {isa = PBXBuildFile; fileRef = FBE5820DB3DFF9793E26A2C5 /* toolbar-user.png */; };
+		216067B3DF6BCD0560FDD232 /* openai-sans-v2-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4619B13F96A4E931484BBF99 /* openai-sans-v2-medium.ttf */; };
 		246A58437594A9848E27AE45 /* nexus-intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8798978FBDBE5A7A1EE9DC38 /* nexus-intents.swift */; };
+		2A9A9CC6EB30699C2A3CC864 /* openai-sans-v2-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C2FC610AA75A5E0A7B184DC /* openai-sans-v2-regular.ttf */; };
+		31A584FB8A14B2F07DB1F0DF /* openai-sans-v2-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F96268C9EBBBD0CC79CF8E9 /* openai-sans-v2-bold.ttf */; };
+		3BBB92543CB0C155F390F1C9 /* openai-sans-v2-semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A33D5676EFD8F9C343CF5D1D /* openai-sans-v2-semibold.ttf */; };
 		3D4AA4CEE39D86E05C76B9D2 /* nexus-macos-app.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F1272B7B6D76BF131D42EE /* nexus-macos-app.swift */; };
 		44CD1209D79F4228BA111DE7 /* nexus-shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9CFD3AB635287A38F9FF1 /* nexus-shared.swift */; };
+		5712A6B310AAA221370C0839 /* toolbar-add.png in Resources */ = {isa = PBXBuildFile; fileRef = B2BFA47B33607654B58D3B47 /* toolbar-add.png */; };
+		6156E26B7106F370F7A04A57 /* openai-sans-v2-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C2FC610AA75A5E0A7B184DC /* openai-sans-v2-regular.ttf */; };
 		652777A96109B8F789274E4F /* nexus-macos-autofill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6316526FF2F7C8F04D1AC856 /* nexus-macos-autofill.swift */; };
 		6DB923D6467F5083D9528EAD /* nexus-ios-app.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC571795293F75D94C0218 /* nexus-ios-app.swift */; };
+		6EB32157EE1CB0FE5C9DD43E /* openai-sans-v2-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F96268C9EBBBD0CC79CF8E9 /* openai-sans-v2-bold.ttf */; };
+		75E95BD7CFB4E3A2E4534C40 /* openai-sans-v2-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C2FC610AA75A5E0A7B184DC /* openai-sans-v2-regular.ttf */; };
+		8FB6E20654A2CE490732FD24 /* openai-sans-v2-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4619B13F96A4E931484BBF99 /* openai-sans-v2-medium.ttf */; };
 		933407D650523CB4E34D2322 /* nexus-shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9CFD3AB635287A38F9FF1 /* nexus-shared.swift */; };
+		9CD231B1BCAADB1BDE44717F /* openai-sans-v2-semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A33D5676EFD8F9C343CF5D1D /* openai-sans-v2-semibold.ttf */; };
+		AE2777BAB6391200A331EF25 /* toolbar-user.png in Resources */ = {isa = PBXBuildFile; fileRef = FBE5820DB3DFF9793E26A2C5 /* toolbar-user.png */; };
+		B80768771291FDF2C709EA36 /* openai-sans-v2-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F96268C9EBBBD0CC79CF8E9 /* openai-sans-v2-bold.ttf */; };
+		BB5C5DAC73EB4E97F5EDE6C3 /* toolbar-user.png in Resources */ = {isa = PBXBuildFile; fileRef = FBE5820DB3DFF9793E26A2C5 /* toolbar-user.png */; };
+		BC6DE4FEFA497852171FB5F1 /* openai-sans-v2-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F96268C9EBBBD0CC79CF8E9 /* openai-sans-v2-bold.ttf */; };
+		C6CE39E8AA7413B0289FB1EE /* toolbar-add.png in Resources */ = {isa = PBXBuildFile; fileRef = B2BFA47B33607654B58D3B47 /* toolbar-add.png */; };
+		D441D36D033E0C2C9FFE5CEC /* openai-sans-v2-semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A33D5676EFD8F9C343CF5D1D /* openai-sans-v2-semibold.ttf */; };
+		D462F69703A5F9FD8FDBFC5E /* openai-sans-v2-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4619B13F96A4E931484BBF99 /* openai-sans-v2-medium.ttf */; };
+		D46B1CCB813E55A33A51CE40 /* openai-sans-v2-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C2FC610AA75A5E0A7B184DC /* openai-sans-v2-regular.ttf */; };
 		DA09D37A3DE29598511E8E69 /* nexus-intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8798978FBDBE5A7A1EE9DC38 /* nexus-intents.swift */; };
 		DA6F8D121B9175EC47BF3721 /* NexusMacOSAutoFill.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5F64191E9E85559803495F4C /* NexusMacOSAutoFill.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DE6E731C728795073DF9764C /* openai-sans-v2-semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A33D5676EFD8F9C343CF5D1D /* openai-sans-v2-semibold.ttf */; };
+		E81B0D1B1F0FD51FBFC82477 /* openai-sans-v2-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4619B13F96A4E931484BBF99 /* openai-sans-v2-medium.ttf */; };
 		EB747FDB5F6A6DE7D18B6C75 /* NexusIOSAutoFill.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3B88F9D4420DB4A4CE60F5AD /* NexusIOSAutoFill.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		ED8EE285D166FFD7C2399550 /* toolbar-add.png in Resources */ = {isa = PBXBuildFile; fileRef = B2BFA47B33607654B58D3B47 /* toolbar-add.png */; };
 		F0CA931394CAF9C4490482AE /* nexus-ios-autofill.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18EFA72042A6EDE337C65CE /* nexus-ios-autofill.swift */; };
+		F20EF8CF106FD50511A15C4B /* toolbar-user.png in Resources */ = {isa = PBXBuildFile; fileRef = FBE5820DB3DFF9793E26A2C5 /* toolbar-user.png */; };
 		F4DF2A842F81E41F4E5DCE97 /* nexus-shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9CFD3AB635287A38F9FF1 /* nexus-shared.swift */; };
 		F610C80F1EABCC0C6C0AFB5C /* nexus-shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD9CFD3AB635287A38F9FF1 /* nexus-shared.swift */; };
 /* End PBXBuildFile section */
@@ -66,17 +90,32 @@
 /* Begin PBXFileReference section */
 		1C55FB7276C6EE207FF1DCE2 /* NexusMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NexusMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		207E68F06377942B37FF22D4 /* NexusIOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = NexusIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F96268C9EBBBD0CC79CF8E9 /* openai-sans-v2-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "openai-sans-v2-bold.ttf"; sourceTree = "<group>"; };
 		3B88F9D4420DB4A4CE60F5AD /* NexusIOSAutoFill.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = NexusIOSAutoFill.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		44F1272B7B6D76BF131D42EE /* nexus-macos-app.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "nexus-macos-app.swift"; sourceTree = "<group>"; };
+		4619B13F96A4E931484BBF99 /* openai-sans-v2-medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "openai-sans-v2-medium.ttf"; sourceTree = "<group>"; };
 		4AD9CFD3AB635287A38F9FF1 /* nexus-shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "nexus-shared.swift"; sourceTree = "<group>"; };
+		4C2FC610AA75A5E0A7B184DC /* openai-sans-v2-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "openai-sans-v2-regular.ttf"; sourceTree = "<group>"; };
 		5F64191E9E85559803495F4C /* NexusMacOSAutoFill.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NexusMacOSAutoFill.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6316526FF2F7C8F04D1AC856 /* nexus-macos-autofill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "nexus-macos-autofill.swift"; sourceTree = "<group>"; };
 		8798978FBDBE5A7A1EE9DC38 /* nexus-intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "nexus-intents.swift"; sourceTree = "<group>"; };
 		99FC571795293F75D94C0218 /* nexus-ios-app.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "nexus-ios-app.swift"; sourceTree = "<group>"; };
+		A33D5676EFD8F9C343CF5D1D /* openai-sans-v2-semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "openai-sans-v2-semibold.ttf"; sourceTree = "<group>"; };
+		B2BFA47B33607654B58D3B47 /* toolbar-add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-add.png"; sourceTree = "<group>"; };
 		F18EFA72042A6EDE337C65CE /* nexus-ios-autofill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "nexus-ios-autofill.swift"; sourceTree = "<group>"; };
+		FBE5820DB3DFF9793E26A2C5 /* toolbar-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-user.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		267BB0BBF9CC4D8CF6B43E5E /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				B2BFA47B33607654B58D3B47 /* toolbar-add.png */,
+				FBE5820DB3DFF9793E26A2C5 /* toolbar-user.png */,
+			);
+			path = icons;
+			sourceTree = "<group>";
+		};
 		90E0BA6CA301C30D6B2379A4 /* ios */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,8 +139,21 @@
 			isa = PBXGroup;
 			children = (
 				4AD9CFD3AB635287A38F9FF1 /* nexus-shared.swift */,
+				B5629382C16B66545DBC3A5E /* fonts */,
+				267BB0BBF9CC4D8CF6B43E5E /* icons */,
 			);
 			path = shared;
+			sourceTree = "<group>";
+		};
+		B5629382C16B66545DBC3A5E /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2F96268C9EBBBD0CC79CF8E9 /* openai-sans-v2-bold.ttf */,
+				4619B13F96A4E931484BBF99 /* openai-sans-v2-medium.ttf */,
+				4C2FC610AA75A5E0A7B184DC /* openai-sans-v2-regular.ttf */,
+				A33D5676EFD8F9C343CF5D1D /* openai-sans-v2-semibold.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		B744E1E1CFFD57DDA6B1AA21 /* macos-autofill */ = {
@@ -157,6 +209,7 @@
 			buildConfigurationList = AF0B7153623F6445F09D9D82 /* Build configuration list for PBXNativeTarget "NexusIOS" */;
 			buildPhases = (
 				C4DD8F69EA407435C5017236 /* Sources */,
+				7160971F4A1392C083D01372 /* Resources */,
 				CCA6F618AD69342CB5425977 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
@@ -176,6 +229,7 @@
 			buildConfigurationList = 3AC57353E37BE5749CF18F38 /* Build configuration list for PBXNativeTarget "NexusIOSAutoFill" */;
 			buildPhases = (
 				B7E609A6C3CAD975744DED92 /* Sources */,
+				382DD1128B4CD487D16AF26A /* Resources */,
 			);
 			buildRules = (
 			);
@@ -193,6 +247,7 @@
 			buildConfigurationList = 2DFBFAC19430FE76A020E7E3 /* Build configuration list for PBXNativeTarget "NexusMacOS" */;
 			buildPhases = (
 				61CD76CA99A94C70E58680AB /* Sources */,
+				DAAA68013415172993591B5A /* Resources */,
 				EB3CE08E882EE982FD9A7763 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
@@ -212,6 +267,7 @@
 			buildConfigurationList = D57C3781278C426BF8A9C1FC /* Build configuration list for PBXNativeTarget "NexusMacOSAutoFill" */;
 			buildPhases = (
 				AA09BF3D6AA283A6D3328DC0 /* Sources */,
+				E81A555763B050489F973816 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -268,6 +324,61 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		382DD1128B4CD487D16AF26A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6EB32157EE1CB0FE5C9DD43E /* openai-sans-v2-bold.ttf in Resources */,
+				8FB6E20654A2CE490732FD24 /* openai-sans-v2-medium.ttf in Resources */,
+				D46B1CCB813E55A33A51CE40 /* openai-sans-v2-regular.ttf in Resources */,
+				9CD231B1BCAADB1BDE44717F /* openai-sans-v2-semibold.ttf in Resources */,
+				13AE14750CAC41326FC7AF76 /* toolbar-add.png in Resources */,
+				F20EF8CF106FD50511A15C4B /* toolbar-user.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7160971F4A1392C083D01372 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31A584FB8A14B2F07DB1F0DF /* openai-sans-v2-bold.ttf in Resources */,
+				D462F69703A5F9FD8FDBFC5E /* openai-sans-v2-medium.ttf in Resources */,
+				6156E26B7106F370F7A04A57 /* openai-sans-v2-regular.ttf in Resources */,
+				3BBB92543CB0C155F390F1C9 /* openai-sans-v2-semibold.ttf in Resources */,
+				5712A6B310AAA221370C0839 /* toolbar-add.png in Resources */,
+				BB5C5DAC73EB4E97F5EDE6C3 /* toolbar-user.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DAAA68013415172993591B5A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B80768771291FDF2C709EA36 /* openai-sans-v2-bold.ttf in Resources */,
+				E81B0D1B1F0FD51FBFC82477 /* openai-sans-v2-medium.ttf in Resources */,
+				2A9A9CC6EB30699C2A3CC864 /* openai-sans-v2-regular.ttf in Resources */,
+				D441D36D033E0C2C9FFE5CEC /* openai-sans-v2-semibold.ttf in Resources */,
+				C6CE39E8AA7413B0289FB1EE /* toolbar-add.png in Resources */,
+				1AB837FFBE34448BFDC0011F /* toolbar-user.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E81A555763B050489F973816 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC6DE4FEFA497852171FB5F1 /* openai-sans-v2-bold.ttf in Resources */,
+				216067B3DF6BCD0560FDD232 /* openai-sans-v2-medium.ttf in Resources */,
+				75E95BD7CFB4E3A2E4534C40 /* openai-sans-v2-regular.ttf in Resources */,
+				DE6E731C728795073DF9764C /* openai-sans-v2-semibold.ttf in Resources */,
+				ED8EE285D166FFD7C2399550 /* toolbar-add.png in Resources */,
+				AE2777BAB6391200A331EF25 /* toolbar-user.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		61CD76CA99A94C70E58680AB /* Sources */ = {
