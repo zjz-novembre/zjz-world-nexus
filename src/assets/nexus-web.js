@@ -9192,9 +9192,9 @@ const Zp = new Intl.NumberFormat("en-US", {
       singularLabel: "API Key",
       navIcon: "/shared/icons/keys.png",
       searchPlaceholder: "Search keys...",
-      searchableFields: ["keyName", "rawValue", "maskedValue", "note"],
+      searchableFields: ["keyName", "rawValue", "maskedValue", "environment", "note"],
       editorLayout: { columnCount: 1 },
-      editorFieldOrder: ["keyName", "keyValue", "note"],
+      editorFieldOrder: ["keyName", "keyValue", "environment", "note"],
       createSections: [
         {
           id: "main",
@@ -9214,6 +9214,13 @@ const Zp = new Intl.NumberFormat("en-US", {
               required: !0,
               placeholder: "nx_live_51M...",
               autoComplete: "off",
+            },
+            {
+              id: "environment",
+              label: "Status",
+              type: "choice",
+              options: ["ACTIVE", "INACTIVE"],
+              defaultValue: "ACTIVE",
             },
             {
               id: "note",
@@ -9240,6 +9247,7 @@ const Zp = new Intl.NumberFormat("en-US", {
         "creditLimit",
         "expiry",
         "cvv",
+        "pin",
         "nextBillingDate",
         "note",
       ],
@@ -9299,6 +9307,15 @@ const Zp = new Intl.NumberFormat("en-US", {
               autoComplete: "cc-csc",
               numericOnly: !0,
               maxDigits: 4,
+            },
+            {
+              id: "pin",
+              label: "PIN",
+              type: "secret",
+              placeholder: "1234",
+              autoComplete: "off",
+              numericOnly: !0,
+              maxDigits: 6,
             },
             { id: "nextBillingDate", label: "Next Billing", type: "date" },
             {
@@ -9447,12 +9464,12 @@ function nm(e, t) {
       ];
     }
     case "apiKeys": {
-      const n = t.filter((l) => l.environment === "LIVE").length,
-        r = t.filter((l) => l.environment === "INTERNAL").length;
+      const n = t.filter((l) => __normalizeAPIKeyEnvironment(l.environment) === "ACTIVE").length,
+        r = t.filter((l) => __normalizeAPIKeyEnvironment(l.environment) === "INACTIVE").length;
       return [
         { label: "Total Keys", value: ft(t.length) },
-        { label: "Live Keys", value: ft(n) },
-        { label: "Internal", value: ft(r) },
+        { label: "Active", value: ft(n) },
+        { label: "Inactive", value: ft(r) },
       ];
     }
     case "subscriptions": {
@@ -9514,6 +9531,7 @@ function Wc(e, t) {
         ...n,
         keyName: t.keyName ?? "",
         keyValue: t.rawValue ?? "",
+        environment: __normalizeAPIKeyEnvironment(t.environment ?? n.environment),
         note: t.note ?? "",
       };
     case "cards":
@@ -9529,6 +9547,7 @@ function Wc(e, t) {
         creditLimit: String(t.creditLimit ?? ""),
         expiry: t.expiry ?? "",
         cvv: t.rawCvv ?? "",
+        pin: t.rawPin ?? "",
         nextBillingDate: t.billingAnchorDate ?? "",
         note: t.note ?? "",
       };
@@ -9653,16 +9672,15 @@ function ed(e, t, n) {
   const r = Number(e ?? 0),
     l = __normalizeCurrencyCode(t),
     i = n ?? 2,
-    o = new Intl.NumberFormat(
-      l === "CAD" ? "en-CA" : l === "CNY" ? "zh-CN" : "en-US",
-      {
-        style: "currency",
-        currency: l,
-        minimumFractionDigits: i,
-        maximumFractionDigits: i,
-      },
-    ).format(r);
-  return l === "CAD" ? "CA$" + o.replace(/^\$+/, "") : o;
+    o = new Intl.NumberFormat("en-US", {
+      minimumFractionDigits: i,
+      maximumFractionDigits: i,
+    }).format(r);
+  return `${__currencySymbol(l)}${o}`;
+}
+function __currencySymbol(e) {
+  const t = __normalizeCurrencyCode(e);
+  return t === "USD" ? "$" : t === "CAD" ? "CA$" : t === "CNY" ? "CN¥" : `${t} `;
 }
 function __normalizeCurrencyCode(e) {
   const t = String(e ?? "USD").trim().toUpperCase();
@@ -10375,8 +10393,8 @@ function gm({
     ],
   });
 }
-function wm({ onCopyRow: e, onEditRow: t, onExport: n, rows: r }) {
-  const l = [
+function wm({ metrics: e, onCopyRow: t, onEditRow: n, onExport: r, rows: l }) {
+  const i = [
     {
       id: "name",
       label: "Name",
@@ -10395,7 +10413,7 @@ function wm({ onCopyRow: e, onEditRow: t, onExport: n, rows: r }) {
         a.jsx("button", {
           "aria-label": `Copy ${i.keyName}`,
           className: "table-inline-button",
-          onClick: () => e(i),
+          onClick: () => t(i),
           type: "button",
           children: a.jsx("span", {
             className: "boxed-cell",
@@ -10419,7 +10437,7 @@ function wm({ onCopyRow: e, onEditRow: t, onExport: n, rows: r }) {
         a.jsx("button", {
           "aria-label": `Edit ${i.keyName}`,
           className: "icon-action",
-          onClick: () => t(i.id),
+          onClick: () => n(i.id),
           type: "button",
           children: a.jsx("span", {
             className: "material-symbols-outlined",
@@ -10432,14 +10450,18 @@ function wm({ onCopyRow: e, onEditRow: t, onExport: n, rows: r }) {
   return a.jsxs("main", {
     className: "page-canvas page-canvas--apiKeys",
     children: [
+      a.jsx("section", {
+        className: "page-head page-head--metrics-only",
+        children: a.jsx(Sm, { items: e }),
+      }),
       a.jsx(as, {
-        columns: l,
+        columns: i,
         emptyLabel: "NO MATCHES",
         panelClassName: "data-slab--apiKeys",
-        rows: r,
+        rows: l,
         tableClassName: "data-table--apiKeys",
       }),
-      a.jsx(Bl, { onClick: n }),
+      a.jsx(Bl, { onClick: r }),
     ],
   });
 }
@@ -11682,6 +11704,12 @@ function Tu(e) {
     .trim()
     .toLowerCase();
 }
+function __normalizeAPIKeyEnvironment(e) {
+  const t = String(e ?? "ACTIVE")
+    .trim()
+    .toUpperCase();
+  return t === "RETIRE" || t === "RETIRED" || t === "INTERNAL" || t === "INACTIVE" ? "INACTIVE" : "ACTIVE";
+}
 function Ze(e, t) {
   return Tu(e).localeCompare(Tu(t), void 0, {
     numeric: !0,
@@ -12014,7 +12042,7 @@ function Um() {
   function pd() {
     const P = cd(t, "search-line--topbar");
     switch (t) {
-      case "apiKeys":
+      case "__apiKeysToolbarDisabled":
         return a.jsxs("div", {
           className: "toolbar-stack toolbar-stack--apiKeys",
           children: [
@@ -12060,7 +12088,7 @@ function Um() {
     }
   }
   const bd =
-    t === "apiKeys"
+    t === "__apiKeysToolbarDisabled"
       ? a.jsx("div", {
           className: "mobile-nav-supplement__metric",
           children: a.jsx("div", {

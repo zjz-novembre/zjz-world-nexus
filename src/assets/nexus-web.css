@@ -561,15 +561,18 @@ textarea {
   white-space: normal;
 }
 .page-canvas {
+  display: flex;
+  flex-direction: column;
   flex: 1;
   min-height: 0;
-  overflow: auto;
+  overflow: hidden;
   padding: 30px 28px 48px;
   position: relative;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 .page-head {
+  flex: 0 0 auto;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -657,6 +660,9 @@ textarea {
   font-size: clamp(1.3rem, 4vw, 2rem);
 }
 .data-slab {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
   background: #ffffffdb;
 }
 .data-slab--passwords {
@@ -674,6 +680,7 @@ textarea {
 }
 .data-table__scroll {
   overflow: auto;
+  height: 100%;
   max-width: 100%;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -931,6 +938,7 @@ textarea {
   padding-top: 34px;
 }
 .passwords-head {
+  flex: 0 0 auto;
   display: flex;
   flex-wrap: wrap;
   gap: 40px 52px;
@@ -957,6 +965,7 @@ textarea {
   letter-spacing: -0.08em;
 }
 .subscriptions-head {
+  flex: 0 0 auto;
   display: flex;
   align-items: flex-start;
   gap: 18px;
@@ -990,9 +999,13 @@ textarea {
 }
 .subscriptions-board {
   display: grid;
+  flex: 1 1 auto;
   gap: 16px;
   inline-size: 100%;
+  overflow: auto;
+  align-content: start;
   min-inline-size: 0;
+  min-block-size: 0;
 }
 .subscription-row,
 .subscriptions-empty {
@@ -1022,6 +1035,7 @@ textarea {
   color: var(--text-muted);
 }
 .create-page--modal.page-canvas {
+  display: block;
   padding: var(--modal-gutter);
   overflow: auto;
 }
@@ -1647,8 +1661,7 @@ textarea {
     flex: 0 0 auto;
   }
   .subscriptions-board {
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: auto;
     padding-bottom: 4px;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -1771,8 +1784,7 @@ textarea {
 
 .subscriptions-board {
   width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: auto;
   padding-bottom: 4px;
   -ms-overflow-style: none;
   scrollbar-width: none;

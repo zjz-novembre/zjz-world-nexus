@@ -11,8 +11,12 @@ function normalizeWebsiteHost(website) {
   return normalizedUrl.hostname.replace(/^www\./, "").toLowerCase();
 }
 __name(normalizeWebsiteHost, "normalizeWebsiteHost");
+function splitWebsiteEntries(website) {
+  return String(website ?? "").split(";").map((entry) => entry.trim()).filter(Boolean);
+}
+__name(splitWebsiteEntries, "splitWebsiteEntries");
 function normalizeWebsiteUrl(website) {
-  const trimmedWebsite = String(website ?? "").trim();
+  const trimmedWebsite = splitWebsiteEntries(website)[0] ?? "";
   if (!trimmedWebsite) {
     return null;
   }
@@ -28,15 +32,23 @@ function normalizeWebsiteUrl(website) {
   }
 }
 __name(normalizeWebsiteUrl, "normalizeWebsiteUrl");
+function normalizeWebsiteList(website) {
+  return splitWebsiteEntries(website).map((entry) => normalizeWebsiteUrl(entry)?.toString() || entry).join("; ");
+}
+__name(normalizeWebsiteList, "normalizeWebsiteList");
+function normalizeWebsiteHosts(website) {
+  return Array.from(new Set(splitWebsiteEntries(website).map(normalizeWebsiteHost).filter(Boolean)));
+}
+__name(normalizeWebsiteHosts, "normalizeWebsiteHosts");
 function getPasswordMatchType(requestHost, website) {
-  const credentialHost = normalizeWebsiteHost(website);
-  if (!requestHost || !credentialHost) {
+  const credentialHosts = normalizeWebsiteHosts(website);
+  if (!requestHost || credentialHosts.length === 0) {
     return "";
   }
-  if (requestHost === credentialHost) {
+  if (credentialHosts.some((credentialHost) => requestHost === credentialHost)) {
     return "exact";
   }
-  if (requestHost.endsWith(`.${credentialHost}`)) {
+  if (credentialHosts.some((credentialHost) => requestHost.endsWith(`.${credentialHost}`))) {
     return "subdomain";
   }
   return "";
@@ -105,7 +117,7 @@ var resourceIdByStorageCategory = Object.fromEntries(
 );
 function buildRowFromForm(resourceId, formValues, existingRow = null) {
   const id = existingRow?.id ?? (globalThis.crypto?.randomUUID?.() ?? `${resourceId}-${Date.now()}`);
-  const normalizedWebsite = normalizeWebsiteUrl(formValues.website)?.toString() || String(formValues.website ?? "").trim();
+  const normalizedWebsite = normalizeWebsiteList(formValues.website);
   switch (resourceId) {
     case "passwords": {
       const nextKinds = getPasswordKinds(formValues.credentialMode);
@@ -132,11 +144,12 @@ function buildRowFromForm(resourceId, formValues, existingRow = null) {
         rawValue,
         maskedValue: maskSecret(rawValue),
         note: formValues.note.trim(),
-        environment: existingRow?.environment ?? "LIVE"
+        environment: normalizeAPIKeyEnvironment(formValues.environment ?? existingRow?.environment)
       };
     }
     case "cards": {
       const isNoCreditType = isCardWithoutCreditType(formValues.network);
+      const pin = normalizeCardPin(formValues.pin);
       return {
         id,
         iconKey: formValues.iconKey?.trim() || "",
@@ -150,6 +163,8 @@ function buildRowFromForm(resourceId, formValues, existingRow = null) {
         expiry: formValues.expiry.trim().toUpperCase(),
         rawCvv: formValues.cvv.trim() || existingRow?.rawCvv || "",
         cvvMask: formValues.cvv.trim() ? maskCvv(formValues.cvv) : existingRow?.cvvMask ?? "***",
+        rawPin: pin || existingRow?.rawPin || "",
+        pinMask: pin ? maskPin(pin) : existingRow?.pinMask ?? "",
         billingAnchorDate: isNoCreditType ? "" : formValues.nextBillingDate,
         note: formValues.note.trim()
       };
@@ -179,6 +194,11 @@ function normalizeCurrencyCode(value) {
   return normalized === "JPY" || normalized === "CNY" ? "CNY" : normalized === "CAD" ? "CAD" : "USD";
 }
 __name(normalizeCurrencyCode, "normalizeCurrencyCode");
+function normalizeAPIKeyEnvironment(value) {
+  const normalized = String(value ?? "ACTIVE").trim().toUpperCase();
+  return normalized === "RETIRE" || normalized === "RETIRED" || normalized === "INTERNAL" || normalized === "INACTIVE" ? "INACTIVE" : "ACTIVE";
+}
+__name(normalizeAPIKeyEnvironment, "normalizeAPIKeyEnvironment");
 function normalizeCadence(value) {
   const normalized = String(value ?? "MONTHLY").trim().toUpperCase();
   if (normalized === "YEARLY" || normalized === "ANNUAL" || normalized === "ANNUALLY") {
@@ -234,6 +254,15 @@ function maskCvv(value) {
   return digits ? digits : "***";
 }
 __name(maskCvv, "maskCvv");
+function normalizeCardPin(value) {
+  return String(value ?? "").replace(/\D/g, "").slice(0, 6);
+}
+__name(normalizeCardPin, "normalizeCardPin");
+function maskPin(value) {
+  const digits = normalizeCardPin(value);
+  return digits ? "\u2022".repeat(digits.length) : "";
+}
+__name(maskPin, "maskPin");
 function maskPasswordValue(value) {
   const cleanValue = String(value).trim();
   return cleanValue ? "********" : "-";
@@ -493,8 +522,14 @@ async function deserializeServiceItem(env, item) {
     iconKey: row?.iconKey,
     website: row?.website
   });
-  return {
+  const normalizedRow = {
     ...row,
+    ...(resourceId === "apiKeys" ? { environment: normalizeAPIKeyEnvironment(row?.environment) } : null),
+    ...(resourceId === "cards" ? { creditCurrency: normalizeCurrencyCode(row?.creditCurrency) } : null),
+    ...(resourceId === "subscriptions" ? { amountCurrency: normalizeCurrencyCode(row?.amountCurrency) } : null)
+  };
+  return {
+    ...normalizedRow,
     id: String(item.id),
     ...iconResolution
   };
